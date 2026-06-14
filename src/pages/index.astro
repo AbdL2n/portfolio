@@ -1,17 +1,273 @@
 ---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Skills from '../components/Skills.astro';
+import Experience from '../components/Experience.astro';
+import Education from '../components/Education.astro';
+import Projects from '../components/Projects.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Footer from '../components/Footer.astro';
 
+// ── Flat translation maps for the JS i18n engine ──
+const translationsEn = {
+  // Nav
+  nav_about: "About",
+  nav_skills: "Skills",
+  nav_experience: "Experience",
+  nav_education: "Education",
+  nav_projects: "Projects",
+  nav_contact: "Contact",
+  nav_downloadCV: "Download CV",
+  // Hero
+  hero_greeting: "Hi, I'm",
+  hero_available: "Available immediately",
+  hero_title: "Computer & Industrial Engineer",
+  hero_subtitle: "Specializing in Cybersecurity, Networks & Development",
+  hero_viewProjects: "View my projects",
+  hero_downloadCV: "Download CV",
+  // Skills
+  skills_badge: "Expertise",
+  skills_title: "Technical Skills",
+  skills_subtitle: "A broad range of technical skills acquired through academic projects, internships, and personal research.",
+  skills_cat_0_icon: "🔒",
+  skills_cat_0_title: "Security & SOC",
+  skills_cat_0_desc: "Penetration Testing, SIEM, IAM, SOC, Honeypot, Firewalls, Kali Linux, CTF",
+  skills_cat_1_icon: "🌐",
+  skills_cat_1_title: "Networks & Infrastructure",
+  skills_cat_1_desc: "LAN/WAN, TCP/IP, VPN, VLANs, Cisco, Windows Server, Active Directory, DNS, DHCP",
+  skills_cat_2_icon: "💻",
+  skills_cat_2_title: "Development",
+  skills_cat_2_desc: "Python, TypeScript, Java, Bash, SQL, C, Docker, Git, REST APIs",
+  skills_cat_3_icon: "🖥️",
+  skills_cat_3_title: "Systems",
+  skills_cat_3_desc: "Linux (Debian, Kali, Ubuntu), Windows Server 2019, VMware, Hyper-V, SCADA",
+  skills_cat_4_icon: "🌍",
+  skills_cat_4_title: "Languages",
+  skills_cat_4_desc: "French — Native · English — Professional (B2/C1) · Arabic — Native",
+  skills_cat_5_icon: "🤝",
+  skills_cat_5_title: "Soft Skills",
+  skills_cat_5_desc: "Project Management, Teaching & Pedagogy, Problem-solving, Agile, Team leadership",
+  // Experience
+  exp_badge: "Career",
+  exp_title: "Experience",
+  exp_subtitle: "My professional journey across industry and education.",
+  exp_job_0_company: "Procter & Gamble",
+  exp_job_0_role: "Project Manager & Digitalization Engineer",
+  exp_job_0_period: "2024 – 2025",
+  exp_job_0_location: "Amiens, France",
+  exp_job_0_desc: "Led standardization and digitalization projects for industrial production lines. Developed and deployed SCADA-based monitoring systems. Coordinated cross-functional teams to improve operational efficiency.",
+  exp_job_1_company: "Académie d'Amiens",
+  exp_job_1_role: "Mathematics & Computer Science Teacher",
+  exp_job_1_period: "2023 – 2024",
+  exp_job_1_location: "Amiens, France",
+  exp_job_1_desc: "Teaching mathematics and computer science to secondary school students. Designed lesson plans, exam prep and individual support sessions.",
+  exp_job_2_company: "Acadomia",
+  exp_job_2_role: "Private Tutor",
+  exp_job_2_period: "2022 – 2024",
+  exp_job_2_location: "France",
+  exp_job_2_desc: "Private tutoring in mathematics, physics and computer science for high school and university students.",
+  // Education
+  edu_badge: "Academic",
+  edu_title: "Education",
+  edu_subtitle: "A rigorous academic background combining engineering, mathematics and computer science.",
+  edu_school_0_name: "CY Tech — Cergy Paris Université",
+  edu_school_0_degree: "Engineering Degree — Computer Science & Industrial Engineering",
+  edu_school_0_period: "2021 – 2024",
+  edu_school_0_detail: "Specialization in Cybersecurity and Networks. Final year project at Procter & Gamble.",
+  edu_school_1_name: "CPGE — Lycée La Mache",
+  edu_school_1_degree: "Preparatory Classes for Engineering Schools (MPSI / PSI★)",
+  edu_school_1_period: "2019 – 2021",
+  edu_school_1_detail: "Intensive training in mathematics, physics and engineering sciences.",
+  edu_school_2_name: "Lycée",
+  edu_school_2_degree: "Scientific Baccalaureate — Highest Honours (Mention Très Bien)",
+  edu_school_2_period: "2019",
+  edu_school_2_detail: "Major: Mathematics & Engineering Sciences.",
+  // Projects
+  proj_badge: "Portfolio",
+  proj_title: "Projects",
+  proj_subtitle: "A selection of academic and personal projects across cybersecurity, development and industrial systems.",
+  proj_item_0_category: "Cybersecurity",
+  proj_item_0_title: "Honeypot System",
+  proj_item_0_desc: "Design and deployment of a full honeypot infrastructure to detect, log and analyze cyberattacks in real time.",
+  proj_item_1_category: "Cybersecurity",
+  proj_item_1_title: "Python Botnet",
+  proj_item_1_desc: "Development of a botnet for educational purposes to study command & control architectures.",
+  proj_item_2_category: "Cybersecurity",
+  proj_item_2_title: "ELF Infector",
+  proj_item_2_desc: "Research project: ELF binary infector to understand low-level malware propagation techniques on Linux.",
+  proj_item_3_category: "Industrial",
+  proj_item_3_title: "SCADA Production Line",
+  proj_item_3_desc: "SCADA-based production line monitoring and management system deployed at Procter & Gamble.",
+  proj_item_4_category: "Web Development",
+  proj_item_4_title: "Portfolio Website",
+  proj_item_4_desc: "This site — built with Astro, Tailwind CSS, and React for a modern, multilingual experience.",
+  proj_item_5_category: "Java",
+  proj_item_5_title: "Corridor Game & Web App",
+  proj_item_5_desc: "Full implementation of the Corridor strategy board game with an interactive web application.",
+  // Contact CTA section
+  cta_badge: "Let's Connect",
+  cta_title: "Let's Work Together",
+  cta_subtitle: "I'm actively looking for new opportunities. Whether you have a project, a role, or just want to connect — feel free to reach out.",
+  cta_btn: "Go to contact page",
+  // Footer
+  footer_madeWith: "Made with ❤️ using",
+  footer_rights: "All rights reserved.",
+};
+
+const translationsFr = {
+  // Nav
+  nav_about: "À propos",
+  nav_skills: "Compétences",
+  nav_experience: "Expériences",
+  nav_education: "Formations",
+  nav_projects: "Projets",
+  nav_contact: "Contact",
+  nav_downloadCV: "Télécharger CV",
+  // Hero
+  hero_greeting: "Bonjour, je suis",
+  hero_available: "Disponible immédiatement",
+  hero_title: "Ingénieur Informatique et Industriel",
+  hero_subtitle: "Spécialisé en Cybersécurité, Réseaux et Développement",
+  hero_viewProjects: "Voir mes projets",
+  hero_downloadCV: "Télécharger mon CV",
+  // Skills
+  skills_badge: "Expertise",
+  skills_title: "Compétences Techniques",
+  skills_subtitle: "Un large éventail de compétences acquises au travers de projets académiques, de stages et de recherches personnelles.",
+  skills_cat_0_icon: "🔒",
+  skills_cat_0_title: "Sécurité & SOC",
+  skills_cat_0_desc: "Tests d'intrusion, SIEM, IAM, SOC, Honeypot, Pare-feu, Kali Linux, CTF",
+  skills_cat_1_icon: "🌐",
+  skills_cat_1_title: "Réseaux & Infrastructure",
+  skills_cat_1_desc: "LAN/WAN, TCP/IP, VPN, VLANs, Cisco, Windows Server, Active Directory, DNS, DHCP",
+  skills_cat_2_icon: "💻",
+  skills_cat_2_title: "Développement",
+  skills_cat_2_desc: "Python, TypeScript, Java, Bash, SQL, C, Docker, Git, REST APIs",
+  skills_cat_3_icon: "🖥️",
+  skills_cat_3_title: "Systèmes",
+  skills_cat_3_desc: "Linux (Debian, Kali, Ubuntu), Windows Server 2019, VMware, Hyper-V, SCADA",
+  skills_cat_4_icon: "🌍",
+  skills_cat_4_title: "Langues",
+  skills_cat_4_desc: "Français — Natif · Anglais — Professionnel (B2/C1) · Arabe — Natif",
+  skills_cat_5_icon: "🤝",
+  skills_cat_5_title: "Savoir-être",
+  skills_cat_5_desc: "Gestion de projet, Enseignement & Pédagogie, Résolution de problèmes, Agile, Leadership",
+  // Experience
+  exp_badge: "Parcours",
+  exp_title: "Expériences",
+  exp_subtitle: "Mon parcours professionnel entre l'industrie et l'enseignement.",
+  exp_job_0_company: "Procter & Gamble",
+  exp_job_0_role: "Chef de Projet & Ingénieur Digitalisation",
+  exp_job_0_period: "2024 – 2025",
+  exp_job_0_location: "Amiens, France",
+  exp_job_0_desc: "Pilotage de projets de standardisation et digitalisation sur des lignes de production industrielles. Développement et déploiement de systèmes SCADA. Coordination d'équipes pluridisciplinaires.",
+  exp_job_1_company: "Académie d'Amiens",
+  exp_job_1_role: "Professeur de Mathématiques & Informatique",
+  exp_job_1_period: "2023 – 2024",
+  exp_job_1_location: "Amiens, France",
+  exp_job_1_desc: "Enseignement des mathématiques et de l'informatique à des élèves de lycée. Élaboration de séquences pédagogiques et soutien individualisé.",
+  exp_job_2_company: "Acadomia",
+  exp_job_2_role: "Professeur Particulier",
+  exp_job_2_period: "2022 – 2024",
+  exp_job_2_location: "France",
+  exp_job_2_desc: "Cours particuliers en mathématiques, physique et informatique pour des élèves de lycée et d'université.",
+  // Education
+  edu_badge: "Académique",
+  edu_title: "Formations",
+  edu_subtitle: "Un parcours académique rigoureux alliant ingénierie, mathématiques et informatique.",
+  edu_school_0_name: "CY Tech — Cergy Paris Université",
+  edu_school_0_degree: "Diplôme d'Ingénieur — Informatique et Industriel",
+  edu_school_0_period: "2021 – 2024",
+  edu_school_0_detail: "Spécialisation en Cybersécurité et Réseaux. Projet de fin d'études chez Procter & Gamble.",
+  edu_school_1_name: "CPGE — Lycée La Mache",
+  edu_school_1_degree: "Classe Préparatoire aux Grandes Écoles (MPSI / PSI★)",
+  edu_school_1_period: "2019 – 2021",
+  edu_school_1_detail: "Formation intensive en mathématiques, physique et sciences de l'ingénieur.",
+  edu_school_2_name: "Lycée",
+  edu_school_2_degree: "Baccalauréat Scientifique — Mention Très Bien",
+  edu_school_2_period: "2019",
+  edu_school_2_detail: "Spécialité : Mathématiques & Sciences de l'Ingénieur.",
+  // Projects
+  proj_badge: "Réalisations",
+  proj_title: "Projets",
+  proj_subtitle: "Une sélection de projets académiques et personnels en cybersécurité, développement et systèmes industriels.",
+  proj_item_0_category: "Cybersécurité",
+  proj_item_0_title: "Système Honeypot",
+  proj_item_0_desc: "Conception et déploiement d'une infrastructure honeypot complète pour détecter et analyser les cyberattaques en temps réel.",
+  proj_item_1_category: "Cybersécurité",
+  proj_item_1_title: "Botnet Python",
+  proj_item_1_desc: "Développement d'un botnet à des fins éducatives pour étudier les architectures command & control.",
+  proj_item_2_category: "Cybersécurité",
+  proj_item_2_title: "Infecteur ELF",
+  proj_item_2_desc: "Projet de recherche : infecteur de binaires ELF pour comprendre les techniques de malwares bas-niveau sous Linux.",
+  proj_item_3_category: "Industriel",
+  proj_item_3_title: "Ligne de Production SCADA",
+  proj_item_3_desc: "Système de supervision de ligne de production SCADA déployé chez Procter & Gamble.",
+  proj_item_4_category: "Développement Web",
+  proj_item_4_title: "Site Portfolio",
+  proj_item_4_desc: "Ce site — construit avec Astro, Tailwind CSS et React pour une expérience moderne et multilingue.",
+  proj_item_5_category: "Java",
+  proj_item_5_title: "Jeu Corridor & Application Web",
+  proj_item_5_desc: "Implémentation complète du jeu de stratégie Corridor avec une interface web interactive.",
+  // Contact CTA section
+  cta_badge: "Restons en contact",
+  cta_title: "Travaillons Ensemble",
+  cta_subtitle: "Je suis activement à la recherche de nouvelles opportunités. N'hésitez pas à me contacter pour un projet, un poste ou simplement pour échanger.",
+  cta_btn: "Aller à la page contact",
+  // Footer
+  footer_madeWith: "Fait avec ❤️ avec",
+  footer_rights: "Tous droits réservés.",
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Abd-Ennour OUAALI — Computer & Industrial Engineer"
+  description="Portfolio of Abd-Ennour OUAALI, Computer & Industrial Engineer specializing in Cybersecurity, Networks and Development. Available immediately."
+>
+  <!-- ── Inject translation data into body for JS i18n engine ── -->
+  <body
+    data-translations-en={JSON.stringify(translationsEn)}
+    data-translations-fr={JSON.stringify(translationsFr)}
+  >
+    <Header />
+
+    <main>
+      <Hero />
+
+      <!-- Separator -->
+      <div class="max-w-6xl mx-auto px-5 md:px-8">
+        <div class="h-px bg-gradient-to-r from-transparent via-sky-400/20 to-transparent"></div>
+      </div>
+
+      <Skills />
+
+      <div class="max-w-6xl mx-auto px-5 md:px-8">
+        <div class="h-px bg-gradient-to-r from-transparent via-sky-400/20 to-transparent"></div>
+      </div>
+
+      <Experience />
+
+      <div class="max-w-6xl mx-auto px-5 md:px-8">
+        <div class="h-px bg-gradient-to-r from-transparent via-indigo-400/20 to-transparent"></div>
+      </div>
+
+      <Education />
+
+      <div class="max-w-6xl mx-auto px-5 md:px-8">
+        <div class="h-px bg-gradient-to-r from-transparent via-sky-400/20 to-transparent"></div>
+      </div>
+
+      <Projects />
+
+      <div class="max-w-6xl mx-auto px-5 md:px-8">
+        <div class="h-px bg-gradient-to-r from-transparent via-sky-400/20 to-transparent"></div>
+      </div>
+
+      <ContactSection />
+    </main>
+
+    <Footer />
+  </body>
+</Layout>

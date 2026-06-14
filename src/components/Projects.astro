@@ -1,0 +1,202 @@
+---
+// Projects.astro
+
+const projects = [
+  {
+    image: "/images/projects/honeypot.webp",
+    imageSlug: "honeypot",
+    categoryKey: "proj_item_0_category",
+    categoryDefault: "Cybersecurity",
+    titleKey: "proj_item_0_title",
+    titleDefault: "Honeypot System",
+    descKey: "proj_item_0_desc",
+    descDefault:
+      "Design and deployment of a full honeypot infrastructure to detect, log and analyze cyberattacks in real time.",
+    tags: ["Python", "Linux", "Networking", "Security"],
+    accent: "sky",
+  },
+  {
+    image: "/images/projects/botnet.webp",
+    imageSlug: "botnet",
+    categoryKey: "proj_item_1_category",
+    categoryDefault: "Cybersecurity",
+    titleKey: "proj_item_1_title",
+    titleDefault: "Python Botnet",
+    descKey: "proj_item_1_desc",
+    descDefault:
+      "Development of a botnet for educational purposes to study C&C architectures.",
+    tags: ["Python", "C&C", "Security"],
+    accent: "sky",
+  },
+  {
+    image: "/images/projects/elf.webp",
+    imageSlug: "elf",
+    categoryKey: "proj_item_2_category",
+    categoryDefault: "Cybersecurity",
+    titleKey: "proj_item_2_title",
+    titleDefault: "ELF Infector",
+    descKey: "proj_item_2_desc",
+    descDefault: "ELF binary infector for malware research on Linux.",
+    tags: ["C", "Assembly", "Linux"],
+    accent: "sky",
+  },
+  {
+    image: "/images/projects/scada.webp",
+    imageSlug: "scada",
+    categoryKey: "proj_item_3_category",
+    categoryDefault: "Industrial",
+    titleKey: "proj_item_3_title",
+    titleDefault: "SCADA Production Line",
+    descKey: "proj_item_3_desc",
+    descDefault:
+      "SCADA-based production monitoring system deployed at P&G.",
+    tags: ["SCADA", "Python", "Industrial"],
+    accent: "indigo",
+  },
+  {
+    image: "/images/projects/portfolio.webp",
+    imageSlug: "portfolio",
+    categoryKey: "proj_item_4_category",
+    categoryDefault: "Web Development",
+    titleKey: "proj_item_4_title",
+    titleDefault: "Portfolio Website",
+    descKey: "proj_item_4_desc",
+    descDefault: "This site — built with Astro, Tailwind, React.",
+    tags: ["Astro", "Tailwind", "React"],
+    accent: "indigo",
+  },
+  {
+    image: "/images/projects/corridor.webp",
+    imageSlug: "corridor",
+    categoryKey: "proj_item_5_category",
+    categoryDefault: "Java",
+    titleKey: "proj_item_5_title",
+    titleDefault: "Corridor Game &amp; Web App",
+    descKey: "proj_item_5_desc",
+    descDefault:
+      "Full implementation of the Corridor board game with a web frontend.",
+    tags: ["Java", "Web", "Game Design"],
+    accent: "indigo",
+  },
+];
+---
+
+<section id="projects" class="py-24 relative overflow-hidden">
+  <!-- Background decoration -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-0 left-1/3 w-96 h-96 rounded-full bg-sky-500/5 blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/3 w-80 h-80 rounded-full bg-indigo-500/5 blur-3xl"></div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <!-- Section header -->
+    <div class="text-center mb-16 reveal">
+      <span class="section-badge" data-i18n="proj_badge">Projects</span>
+      <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-4 gradient-text" data-i18n="proj_title">
+        Featured Work
+      </h2>
+      <p class="text-slate-400 text-lg max-w-2xl mx-auto" data-i18n="proj_subtitle">
+        A selection of projects spanning cybersecurity, industrial systems, and software development.
+      </p>
+    </div>
+
+    <!-- Projects grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project, idx) => (
+        <article
+          class={`project-card card reveal reveal-delay-${Math.min((idx % 3) + 1, 4)} group overflow-hidden`}
+        >
+          <!-- Image area -->
+          <div class="project-image-wrapper">
+            <img
+              src={project.image}
+              alt={project.titleDefault}
+              class="project-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+            />
+            <div class="img-placeholder project-img-placeholder" style="display:none;">
+              <svg class="w-8 h-8 text-slate-600 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              <p class="text-slate-600 text-xs text-center px-3">
+                Add project image to<br />
+                <code class="text-slate-500">public/images/projects/{project.imageSlug}.webp</code>
+              </p>
+            </div>
+            <!-- Category overlay -->
+            <div class="absolute top-3 left-3">
+              <span class="tag text-xs" data-i18n={project.categoryKey}>
+                {project.categoryDefault}
+              </span>
+            </div>
+          </div>
+
+          <!-- Card content -->
+          <div class="p-5 flex flex-col flex-1">
+            <h3
+              class="text-lg font-bold text-white mb-2 group-hover:text-sky-400 transition-colors duration-300"
+              data-i18n={project.titleKey}
+              set:html={project.titleDefault}
+            />
+            <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1" data-i18n={project.descKey}>
+              {project.descDefault}
+            </p>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-1.5">
+              {project.tags.map((tag) => (
+                <span class="tag text-xs">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(56, 189, 248, 0.1);
+  }
+
+  .project-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: rgba(8, 13, 26, 0.8);
+  }
+
+  .project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .project-card:hover .project-img {
+    transform: scale(1.05);
+  }
+
+  .project-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img-placeholder {
+    border-radius: 0;
+  }
+</style>

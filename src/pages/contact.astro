@@ -1,0 +1,350 @@
+---
+// src/pages/contact.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contact — Abd-Ennour OUAALI"
+  description="Contact Abd-Ennour OUAALI for job opportunities, project collaborations or any professional inquiry."
+>
+  <!-- ── Translation data injected into body for JS engine ── -->
+  <body
+    data-translations-en={JSON.stringify({
+      nav_about: "About",
+      nav_skills: "Skills",
+      nav_experience: "Experience",
+      nav_education: "Education",
+      nav_projects: "Projects",
+      nav_contact: "Contact",
+      nav_downloadCV: "Download CV",
+      contact_title: "Contact Me",
+      contact_subtitle: "Let's talk about your project or opportunity",
+      contact_downloadCV: "Download my CV",
+      contact_downloadDesc: "Get my full resume in PDF format",
+      contact_form_name: "Full Name",
+      contact_form_email: "Email Address",
+      contact_form_subject: "Subject",
+      contact_form_message: "Message",
+      contact_form_send: "Send Message",
+      contact_form_namePh: "John Doe",
+      contact_form_emailPh: "john@example.com",
+      contact_form_subjectPh: "Project collaboration, job offer...",
+      contact_form_messagePh: "Tell me about your project or opportunity...",
+      footer_madeWith: "Made with ❤️ using",
+      footer_rights: "All rights reserved.",
+    })}
+    data-translations-fr={JSON.stringify({
+      nav_about: "À propos",
+      nav_skills: "Compétences",
+      nav_experience: "Expériences",
+      nav_education: "Formations",
+      nav_projects: "Projets",
+      nav_contact: "Contact",
+      nav_downloadCV: "Télécharger CV",
+      contact_title: "Contactez-moi",
+      contact_subtitle: "Parlons de votre projet ou opportunité",
+      contact_downloadCV: "Télécharger mon CV",
+      contact_downloadDesc: "Obtenez mon CV complet au format PDF",
+      contact_form_name: "Nom complet",
+      contact_form_email: "Adresse email",
+      contact_form_subject: "Sujet",
+      contact_form_message: "Message",
+      contact_form_send: "Envoyer le message",
+      contact_form_namePh: "Jean Dupont",
+      contact_form_emailPh: "jean@exemple.com",
+      contact_form_subjectPh: "Collaboration, offre d'emploi...",
+      contact_form_messagePh: "Parlez-moi de votre projet ou opportunité...",
+      footer_madeWith: "Fait avec ❤️ avec",
+      footer_rights: "Tous droits réservés.",
+    })}
+  >
+
+  <!-- Header -->
+  <header
+    class="sticky top-0 z-50"
+    style="background: rgba(8,13,26,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(56,189,248,0.08);"
+  >
+    <div class="max-w-6xl mx-auto px-5 md:px-8 h-16 flex items-center justify-between">
+      <a href="/" class="font-bold text-lg text-slate-100 hover:text-sky-400 transition-colors">
+        AO<span class="text-sky-400">.</span>
+      </a>
+      <div class="flex items-center gap-3">
+        <!-- Lang switcher -->
+        <div class="flex items-center gap-1 bg-[#0e1628]/50 border border-sky-400/10 rounded-lg p-1">
+          <button data-lang-btn="en" onclick="window.switchLang('en')" class="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold transition-all hover:bg-sky-400/10 opacity-100">
+            <span class="text-base">🇬🇧</span><span class="text-slate-300">EN</span>
+          </button>
+          <div class="w-px h-4 bg-sky-400/20"></div>
+          <button data-lang-btn="fr" onclick="window.switchLang('fr')" class="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold transition-all hover:bg-sky-400/10 opacity-40">
+            <span class="text-base">🇫🇷</span><span class="text-slate-300">FR</span>
+          </button>
+        </div>
+        <a href="/" class="btn-outline text-sm py-2 px-3">
+          ← Back
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="min-h-screen pt-10 pb-20 px-5 md:px-8">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- ── Download CV Banner ── -->
+      <div class="card p-5 mb-10 flex flex-col sm:flex-row items-center gap-4 reveal">
+        <div class="flex items-center gap-4 flex-1">
+          <div class="w-12 h-12 rounded-xl bg-sky-400/10 border border-sky-400/25 flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-slate-200" data-i18n="contact_downloadCV">Download my CV</p>
+            <p class="text-sm text-slate-500" data-i18n="contact_downloadDesc">Get my full resume in PDF format</p>
+          </div>
+        </div>
+        <a
+          href="/cv/cv-abd-ennour-ouaali.pdf"
+          download
+          class="btn-primary flex-shrink-0"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          PDF
+        </a>
+      </div>
+
+      <!-- ── Page Header ── -->
+      <div class="text-center mb-12 reveal">
+        <span class="section-badge">✉️ Contact</span>
+        <h1 class="text-3xl md:text-4xl font-bold text-slate-100 mb-3">
+          <span data-i18n="contact_title">Contact Me</span>
+        </h1>
+        <p class="text-slate-400 max-w-md mx-auto" data-i18n="contact_subtitle">
+          Let's talk about your project or opportunity
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+
+        <!-- ── Contact Form ── -->
+        <div class="lg:col-span-3 reveal">
+          <div class="card p-6 md:p-8">
+            <!-- Replace the action with your Formspree endpoint: https://formspree.io/f/YOUR_ID -->
+            <form
+              id="contact-form"
+              action="mailto:YOUR_EMAIL@gmail.com"
+              method="POST"
+              enctype="text/plain"
+              class="flex flex-col gap-5"
+            >
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wide" for="name">
+                    <span data-i18n="contact_form_name">Full Name</span>
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    name="name"
+                    required
+                    class="form-input"
+                    data-i18n-placeholder="contact_form_namePh"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wide" for="email">
+                    <span data-i18n="contact_form_email">Email Address</span>
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    required
+                    class="form-input"
+                    data-i18n-placeholder="contact_form_emailPh"
+                    placeholder="john@example.com"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wide" for="subject">
+                  <span data-i18n="contact_form_subject">Subject</span>
+                </label>
+                <input
+                  id="subject"
+                  type="text"
+                  name="subject"
+                  required
+                  class="form-input"
+                  data-i18n-placeholder="contact_form_subjectPh"
+                  placeholder="Project collaboration, job offer..."
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wide" for="message">
+                  <span data-i18n="contact_form_message">Message</span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  required
+                  class="form-input resize-none"
+                  data-i18n-placeholder="contact_form_messagePh"
+                  placeholder="Tell me about your project or opportunity..."
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary justify-center w-full py-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+                <span data-i18n="contact_form_send">Send Message</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- ── Contact Info ── -->
+        <div class="lg:col-span-2 flex flex-col gap-4 reveal reveal-delay-2">
+
+          <!-- Phone -->
+          <div class="card p-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-lg bg-sky-400/10 border border-sky-400/20 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs text-slate-500 font-medium uppercase tracking-wide mb-0.5">Phone</p>
+              <a href="tel:+33768578324" class="text-slate-200 font-semibold hover:text-sky-400 transition-colors text-sm">
+                (+33) 7 68 57 83 24
+              </a>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="card p-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-lg bg-indigo-400/10 border border-indigo-400/20 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs text-slate-500 font-medium uppercase tracking-wide mb-0.5">Email</p>
+              <!-- Replace with your real email address -->
+              <a href="mailto:YOUR_EMAIL@gmail.com" class="text-slate-200 font-semibold hover:text-sky-400 transition-colors text-sm break-all">
+                YOUR_EMAIL@gmail.com
+              </a>
+            </div>
+          </div>
+
+          <!-- LinkedIn -->
+          <div class="card p-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-lg bg-sky-400/10 border border-sky-400/20 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-sky-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs text-slate-500 font-medium uppercase tracking-wide mb-0.5">LinkedIn</p>
+              <a
+                href="https://www.linkedin.com/in/abd-ennour-o-005740253/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-slate-200 font-semibold hover:text-sky-400 transition-colors text-sm"
+              >
+                abd-ennour-o
+              </a>
+            </div>
+          </div>
+
+          <!-- GitHub -->
+          <div class="card p-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-lg bg-slate-700/50 border border-slate-600/30 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-slate-300" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs text-slate-500 font-medium uppercase tracking-wide mb-0.5">GitHub</p>
+              <a
+                href="https://github.com/AbdL2n"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-slate-200 font-semibold hover:text-sky-400 transition-colors text-sm"
+              >
+                AbdL2n
+              </a>
+            </div>
+          </div>
+
+          <!-- Root-me -->
+          <div class="card p-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-lg bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs text-slate-500 font-medium uppercase tracking-wide mb-0.5">Root-Me</p>
+              <a
+                href="https://www.root-me.org/AbdL2n"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-slate-200 font-semibold hover:text-sky-400 transition-colors text-sm"
+              >
+                AbdL2n
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-sky-400/10 bg-[#04080f] py-6">
+    <div class="max-w-6xl mx-auto px-5 md:px-8 text-center">
+      <p class="text-slate-600 text-xs">
+        <span data-i18n="footer_madeWith">Made with ❤️ using</span>
+        <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-sky-400/70 hover:text-sky-400 transition-colors ml-1">Astro</a>
+        &amp;
+        <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="text-sky-400/70 hover:text-sky-400 transition-colors">Tailwind</a>
+        &nbsp;·&nbsp;
+        &copy; {new Date().getFullYear()} Abd-Ennour OUAALI.
+        <span data-i18n="footer_rights">All rights reserved.</span>
+      </p>
+    </div>
+  </footer>
+
+  </body>
+
+  <script is:inline>
+    // Handle placeholder translations for inputs
+    document.addEventListener('DOMContentLoaded', function() {
+      const lang = localStorage.getItem('lang') || 'en';
+      const body = document.body;
+      const data = JSON.parse(body.dataset['translations' + lang.charAt(0).toUpperCase() + lang.slice(1)] || '{}');
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.dataset.i18nPlaceholder;
+        if (data[key]) el.placeholder = data[key];
+      });
+
+      // Override switchLang to also handle placeholders
+      const origSwitch = window.switchLang;
+      window.switchLang = function(l) {
+        origSwitch(l);
+        const d = JSON.parse(body.dataset['translations' + l.charAt(0).toUpperCase() + l.slice(1)] || '{}');
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+          const key = el.dataset.i18nPlaceholder;
+          if (d[key]) el.placeholder = d[key];
+        });
+      };
+    });
+  </script>
+</Layout>

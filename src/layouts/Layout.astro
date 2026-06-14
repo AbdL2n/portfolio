@@ -1,0 +1,145 @@
+---
+// src/layouts/Layout.astro
+export interface Props {
+  title?: string;
+  description?: string;
+  lang?: string;
+}
+
+const {
+  title = "Abd-Ennour OUAALI — Computer & Industrial Engineer",
+  description = "Portfolio of Abd-Ennour OUAALI, Computer & Industrial Engineer specializing in Cybersecurity, Networks and Development. Available immediately.",
+  lang = "en",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Abd-Ennour OUAALI" />
+    <meta name="keywords" content="cybersecurity, engineer, network, developer, portfolio, CY Tech, Python, Astro" />
+
+    <!-- Open Graph (for LinkedIn/Twitter sharing) -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lang === "fr" ? "fr_FR" : "en_US"} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Google Fonts — preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    />
+
+    <!-- Global styles -->
+    <link rel="stylesheet" href="/src/styles/global.css" />
+
+    <!-- Generator -->
+    <meta name="generator" content={Astro.generator} />
+  </head>
+
+  <body class="bg-[#080d1a] text-slate-100 antialiased">
+    <slot />
+
+    <!-- ─── Scroll Reveal Observer ─── -->
+    <script is:inline>
+      (function () {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+
+        function initObserver() {
+          document
+            .querySelectorAll(".reveal, .reveal-left")
+            .forEach((el) => observer.observe(el));
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", initObserver);
+        } else {
+          initObserver();
+        }
+      })();
+    </script>
+
+    <!-- ─── i18n Language Switcher Engine ─── -->
+    <script is:inline>
+      (function () {
+        // ── Translation data ──────────────────────────────────────────
+        window.__translations = {
+          en: {},
+          fr: {},
+        };
+        // Translations are injected by each page via data-i18n attributes.
+        // The switcher reads from a flattened JSON stored in <body data-translations-en> and <body data-translations-fr>.
+
+        function applyLang(lang) {
+          const body = document.body;
+          const data = JSON.parse(body.dataset["translations" + lang.charAt(0).toUpperCase() + lang.slice(1)] || "{}");
+
+          document.querySelectorAll("[data-i18n]").forEach((el) => {
+            const key = el.dataset.i18n;
+            if (data[key] !== undefined) {
+              if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+                el.placeholder = data[key];
+              } else {
+                el.textContent = data[key];
+              }
+            }
+          });
+
+          // Update HTML lang attribute
+          document.documentElement.lang = lang;
+
+          // Update active flag buttons
+          document.querySelectorAll("[data-lang-btn]").forEach((btn) => {
+            btn.classList.toggle("opacity-100", btn.dataset.langBtn === lang);
+            btn.classList.toggle("opacity-40", btn.dataset.langBtn !== lang);
+          });
+
+          // Save preference
+          localStorage.setItem("lang", lang);
+          window.__currentLang = lang;
+        }
+
+        function switchLang(lang) {
+          applyLang(lang);
+        }
+
+        // Expose switcher globally
+        window.switchLang = switchLang;
+
+        // Init on DOM ready
+        function init() {
+          const saved = localStorage.getItem("lang") || "en";
+          applyLang(saved);
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", init);
+        } else {
+          init();
+        }
+      })();
+    </script>
+  </body>
+</html>
