@@ -14,25 +14,36 @@ const schools = [
     detailDefault: "Specialization in Cybersecurity and Networks.",
   },
   {
-    logo: "/images/logos/cpge.png",
+    logo: "/images/logos/howest.png",
     nameKey: "edu_school_1_name",
-    nameDefault: "CPGE — Lycée Louis Thuillier",
+    nameDefault: "Howest — Bruges, Belgium",
     degreeKey: "edu_school_1_degree",
-    degreeDefault: "Preparatory Classes (MPSI / PSI★)",
+    degreeDefault: "University Exchange Semester",
     periodKey: "edu_school_1_period",
-    periodDefault: "2020 – 2022",
+    periodDefault: "01/2024 – 06/2024",
     detailKey: "edu_school_1_detail",
+    detailDefault: "Cybersecurity (pentest, cracking, mobile security) and app prototyping.",
+  },
+  {
+    logo: "/images/logos/cpge.png",
+    nameKey: "edu_school_2_name",
+    nameDefault: "CPGE — Lycée Louis Thuillier",
+    degreeKey: "edu_school_2_degree",
+    degreeDefault: "Preparatory Classes (MPSI / PSI★)",
+    periodKey: "edu_school_2_period",
+    periodDefault: "2020 – 2022",
+    detailKey: "edu_school_2_detail",
     detailDefault: "Intensive training in maths, physics, engineering.",
   },
   {
     logo: "/images/logos/lycee.png",
-    nameKey: "edu_school_2_name",
+    nameKey: "edu_school_3_name",
     nameDefault: "Lycée",
-    degreeKey: "edu_school_2_degree",
+    degreeKey: "edu_school_3_degree",
     degreeDefault: "Scientific Bac — Highest Honours",
-    periodKey: "edu_school_2_period",
+    periodKey: "edu_school_3_period",
     periodDefault: "2019",
-    detailKey: "edu_school_2_detail",
+    detailKey: "edu_school_3_detail",
     detailDefault: "Major: Mathematics &amp; Engineering Sciences.",
   },
 ];
@@ -76,7 +87,8 @@ const schools = [
                 <img
                   src={school.logo}
                   alt=""
-                  class="w-full h-full object-contain"
+                  class="w-full h-full object-contain mix-blend-multiply"
+                  style={school.logo.includes('howest') ? 'transform: scale(1.4);' : ''}
                   onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing')"
                 />
               </div>
