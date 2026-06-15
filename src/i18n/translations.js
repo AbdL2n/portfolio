@@ -16,7 +16,7 @@ export const translations = {
     hero: {
       greeting: "Hi, I'm",
       available: "Available immediately",
-      title: "Computer & Industrial Engineer",
+      title: "Computer & Industrial Engineer",      
       subtitle: "Specializing in Cybersecurity, Networks & Development",
       viewProjects: "View my projects",
       downloadCV: "Download CV",
@@ -120,9 +120,9 @@ export const translations = {
       schools: [
         {
           name: "CY Tech — Cergy Paris Université",
-          degree: "Engineering Degree — CS & Industrial",
+          degree: "Software engineer —  Master Degree",
           period: "2022 – 2025",
-          detail: "Specialization in Cybersecurity and Networks.",
+          detail: "Specialization in IT/OT, cybersecurity and development",
           logo: "/images/logos/cytech.png",
         },
         {
@@ -244,7 +244,6 @@ export const translations = {
       greeting: "Bonjour, je suis",
       available: "Disponible immédiatement",
       title: "Ingénieur Informatique et Industriel",
-      subtitle: "Spécialisé en Cybersécurité, Réseaux et Développement",
       viewProjects: "Voir mes projets",
       downloadCV: "Télécharger mon CV",
     },
@@ -347,9 +346,9 @@ export const translations = {
       schools: [
         {
           name: "CY Tech — Cergy Paris Université",
-          degree: "Diplôme d'Ingénieur — Informatique & Industriel",
+          degree: "Diplôme d'Ingénieur",
           period: "2022 – 2025",
-          detail: "Spécialisation en Cybersécurité et Réseaux.",
+          detail: "Spécialisation en IT/OT, cybersécurité, réseaux et développement.",
           logo: "/images/logos/cytech.png",
         },
         {
