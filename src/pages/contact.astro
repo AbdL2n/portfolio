@@ -8,7 +8,7 @@ import Layout from '../layouts/Layout.astro';
   description="Contact Abd-Ennour OUAALI for job opportunities, project collaborations or any professional inquiry."
 >
   <!-- ── Translation data injected into body for JS engine ── -->
-  <body
+  <div id="i18n-data" class="hidden"
     data-translations-en={JSON.stringify({
       nav_about: "About",
       nav_skills: "Skills",
@@ -57,7 +57,7 @@ import Layout from '../layouts/Layout.astro';
       footer_madeWith: "Fait avec ❤️ avec",
       footer_rights: "Tous droits réservés.",
     })}
-  >
+  ></div>
 
   <!-- Header -->
   <header
@@ -66,7 +66,7 @@ import Layout from '../layouts/Layout.astro';
   >
     <div class="max-w-6xl mx-auto px-5 md:px-8 h-16 flex items-center justify-between">
       <a href="/" class="font-bold text-lg text-slate-100 hover:text-sky-400 transition-colors">
-        AO<span class="text-sky-400">.</span>
+        Portfolio<span class="text-sky-400">.</span>
       </a>
       <div class="flex items-center gap-3">
         <!-- Lang switcher -->
@@ -103,7 +103,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </div>
         <a
-          href="/cv/cv-abd-ennour-ouaali.pdf"
+          href="/cv/Resume_Abd-Ennour_OUAALI.pdf"
           download
           class="btn-primary flex-shrink-0"
         >
@@ -133,9 +133,8 @@ import Layout from '../layouts/Layout.astro';
             <!-- Replace the action with your Formspree endpoint: https://formspree.io/f/YOUR_ID -->
             <form
               id="contact-form"
-              action="mailto:YOUR_EMAIL@gmail.com"
+              action="https://formsubmit.co/abdennour.ouaali@gmail.com"
               method="POST"
-              enctype="text/plain"
               class="flex flex-col gap-5"
             >
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -236,9 +235,8 @@ import Layout from '../layouts/Layout.astro';
             </div>
             <div>
               <p class="text-xs text-slate-500 font-medium uppercase tracking-wide mb-0.5">Email</p>
-              <!-- Replace with your real email address -->
-              <a href="mailto:YOUR_EMAIL@gmail.com" class="text-slate-200 font-semibold hover:text-sky-400 transition-colors text-sm break-all">
-                YOUR_EMAIL@gmail.com
+              <a href="mailto:abdennour.ouaali@gmail.com" class="text-slate-200 font-semibold hover:text-sky-400 transition-colors text-sm break-all">
+                abdennour.ouaali@gmail.com
               </a>
             </div>
           </div>
@@ -322,13 +320,14 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </footer>
 
-  </body>
+
 
   <script is:inline>
     // Handle placeholder translations for inputs
     document.addEventListener('DOMContentLoaded', function() {
       const lang = localStorage.getItem('lang') || 'en';
-      const body = document.body;
+      const body = document.getElementById('i18n-data');
+      if (!body) return;
       const data = JSON.parse(body.dataset['translations' + lang.charAt(0).toUpperCase() + lang.slice(1)] || '{}');
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.dataset.i18nPlaceholder;
@@ -338,7 +337,7 @@ import Layout from '../layouts/Layout.astro';
       // Override switchLang to also handle placeholders
       const origSwitch = window.switchLang;
       window.switchLang = function(l) {
-        origSwitch(l);
+        if (origSwitch) origSwitch(l);
         const d = JSON.parse(body.dataset['translations' + l.charAt(0).toUpperCase() + l.slice(1)] || '{}');
         document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
           const key = el.dataset.i18nPlaceholder;

@@ -3,46 +3,56 @@
 
 const jobs = [
   {
-    logo: "/images/logos/pg.png",
-    companyKey: "exp_job_0_company",
-    companyDefault: "Procter &amp; Gamble",
-    roleKey: "exp_job_0_role",
-    roleDefault: "Project Manager &amp; Digitalization Engineer",
-    periodKey: "exp_job_0_period",
-    periodDefault: "2024 – 2025",
-    locationKey: "exp_job_0_location",
-    locationDefault: "Amiens, France",
-    descKey: "exp_job_0_desc",
-    descDefault:
-      "Led digitalization projects on the production floor, deploying SCADA monitoring systems and automating reporting pipelines to improve operational efficiency.",
-  },
-  {
     logo: "/images/logos/academie.png",
-    companyKey: "exp_job_1_company",
+    companyKey: "exp_job_0_company",
     companyDefault: "Académie d'Amiens",
-    roleKey: "exp_job_1_role",
+    roleKey: "exp_job_0_role",
     roleDefault: "Mathematics &amp; CS Teacher",
-    periodKey: "exp_job_1_period",
-    periodDefault: "2023 – 2024",
-    locationKey: "exp_job_1_location",
-    locationDefault: "Amiens, France",
-    descKey: "exp_job_1_desc",
-    descDefault:
-      "Taught Mathematics and Computer Science to secondary school students, designing lesson plans and hands-on lab sessions.",
+    periodKey: "exp_job_0_period",
+    periodDefault: "03/2026 – 05/2026",
+    locationKey: "exp_job_0_location",
+    locationDefault: "Saint-Quentin, France",
+    descKey: "exp_job_0_desc",
+    descDefault: "Contractual mathematics teacher",
   },
   {
     logo: "/images/logos/acadomia.png",
-    companyKey: "exp_job_2_company",
-    companyDefault: "Acadomia",
-    roleKey: "exp_job_2_role",
-    roleDefault: "Private Tutor",
-    periodKey: "exp_job_2_period",
-    periodDefault: "2022 – 2024",
-    locationKey: "exp_job_2_location",
+    companyKey: "exp_job_1_company",
+    companyDefault: "Complétude | Acadomia",
+    roleKey: "exp_job_1_role",
+    roleDefault: "Tutor",
+    periodKey: "exp_job_1_period",
+    periodDefault: "2022 – 2026",
+    locationKey: "exp_job_1_location",
     locationDefault: "France",
+    descKey: "exp_job_1_desc",
+    descDefault: "Tutor in mathematics, physics, and chemistry",
+  },
+  {
+    logo: "/images/logos/pg.png",
+    companyKey: "exp_job_2_company",
+    companyDefault: "Procter &amp; Gamble",
+    roleKey: "exp_job_2_role",
+    roleDefault: "Software Engineer",
+    periodKey: "exp_job_2_period",
+    periodDefault: "04/2025 – 10/2025",
+    locationKey: "exp_job_2_location",
+    locationDefault: "Paris, France",
     descKey: "exp_job_2_desc",
-    descDefault:
-      "Provided private tutoring in Mathematics, Physics, and Computer Science to students from high school through undergraduate level.",
+    descDefault: "Secured infrastructure by migrating critical applications to DMZ. Complete full stack development of a factory application in Python.",
+  },
+  {
+    logo: "/images/logos/pg.png",
+    companyKey: "exp_job_3_company",
+    companyDefault: "Procter &amp; Gamble",
+    roleKey: "exp_job_3_role",
+    roleDefault: "IT factory digitalization Internship",
+    periodKey: "exp_job_3_period",
+    periodDefault: "06/2023 – 08/2023",
+    locationKey: "exp_job_3_location",
+    locationDefault: "Amiens, France",
+    descKey: "exp_job_3_desc",
+    descDefault: "Continuous Improvement: Power Platform Factory app rebuilt making the process 3 times faster.",
   },
 ];
 ---
@@ -163,11 +173,12 @@ const jobs = [
   }
 
   .logo-placeholder {
-    border: 2px dashed rgb(56 189 248 / 0.3);
-    background: rgb(56 189 248 / 0.05);
+    background: #ffffff;
+    border: 1px solid rgba(255,255,255,0.1);
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0.25rem;
   }
 
   .logo-placeholder.logo-missing::before {

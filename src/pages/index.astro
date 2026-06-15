@@ -53,21 +53,26 @@ const translationsEn = {
   exp_badge: "Career",
   exp_title: "Experience",
   exp_subtitle: "My professional journey across industry and education.",
-  exp_job_0_company: "Procter & Gamble",
-  exp_job_0_role: "Project Manager & Digitalization Engineer",
-  exp_job_0_period: "2024 – 2025",
-  exp_job_0_location: "Amiens, France",
-  exp_job_0_desc: "Led standardization and digitalization projects for industrial production lines. Developed and deployed SCADA-based monitoring systems. Coordinated cross-functional teams to improve operational efficiency.",
-  exp_job_1_company: "Académie d'Amiens",
-  exp_job_1_role: "Mathematics & Computer Science Teacher",
-  exp_job_1_period: "2023 – 2024",
-  exp_job_1_location: "Amiens, France",
-  exp_job_1_desc: "Teaching mathematics and computer science to secondary school students. Designed lesson plans, exam prep and individual support sessions.",
-  exp_job_2_company: "Acadomia",
-  exp_job_2_role: "Private Tutor",
-  exp_job_2_period: "2022 – 2024",
-  exp_job_2_location: "France",
-  exp_job_2_desc: "Private tutoring in mathematics, physics and computer science for high school and university students.",
+  exp_job_0_company: "Académie d'Amiens",
+  exp_job_0_role: "Mathematics Teacher",
+  exp_job_0_period: "03/2026 – 05/2026",
+  exp_job_0_location: "Saint-Quentin, France",
+  exp_job_0_desc: "Contractual mathematics teacher.",
+  exp_job_1_company: "Complétude | Acadomia",
+  exp_job_1_role: "Tutor",
+  exp_job_1_period: "2022 – 2026",
+  exp_job_1_location: "France",
+  exp_job_1_desc: "Tutor in mathematics, physics, and chemistry.",
+  exp_job_2_company: "Procter & Gamble",
+  exp_job_2_role: "Software Engineer",
+  exp_job_2_period: "04/2025 – 10/2025",
+  exp_job_2_location: "Paris, France",
+  exp_job_2_desc: "Secured infrastructure by migrating critical applications to DMZ, reducing attack surface by 20%. Complete full stack development of a factory application in Python (Flask, restAPI, DevOps, Azure). Reduction by 2 in operator execution time, 50% savings in costs related to losses on forward lines.",
+  exp_job_3_company: "Procter & Gamble",
+  exp_job_3_role: "IT factory digitalization Internship",
+  exp_job_3_period: "06/2023 – 08/2023",
+  exp_job_3_location: "Amiens, France",
+  exp_job_3_desc: "Continuous Improvement: Power Platform Factory app rebuilt making the process 3 times faster.",
   // Education
   edu_badge: "Academic",
   edu_title: "Education",
@@ -158,21 +163,26 @@ const translationsFr = {
   exp_badge: "Parcours",
   exp_title: "Expériences",
   exp_subtitle: "Mon parcours professionnel entre l'industrie et l'enseignement.",
-  exp_job_0_company: "Procter & Gamble",
-  exp_job_0_role: "Chef de Projet & Ingénieur Digitalisation",
-  exp_job_0_period: "2024 – 2025",
-  exp_job_0_location: "Amiens, France",
-  exp_job_0_desc: "Pilotage de projets de standardisation et digitalisation sur des lignes de production industrielles. Développement et déploiement de systèmes SCADA. Coordination d'équipes pluridisciplinaires.",
-  exp_job_1_company: "Académie d'Amiens",
-  exp_job_1_role: "Professeur de Mathématiques & Informatique",
-  exp_job_1_period: "2023 – 2024",
-  exp_job_1_location: "Amiens, France",
-  exp_job_1_desc: "Enseignement des mathématiques et de l'informatique à des élèves de lycée. Élaboration de séquences pédagogiques et soutien individualisé.",
-  exp_job_2_company: "Acadomia",
-  exp_job_2_role: "Professeur Particulier",
-  exp_job_2_period: "2022 – 2024",
-  exp_job_2_location: "France",
-  exp_job_2_desc: "Cours particuliers en mathématiques, physique et informatique pour des élèves de lycée et d'université.",
+  exp_job_0_company: "Académie d'Amiens",
+  exp_job_0_role: "Professeur de Mathématiques",
+  exp_job_0_period: "03/2026 – 05/2026",
+  exp_job_0_location: "Saint-Quentin, France",
+  exp_job_0_desc: "Professeur de mathématiques contractuel.",
+  exp_job_1_company: "Complétude | Acadomia",
+  exp_job_1_role: "Professeur Particulier",
+  exp_job_1_period: "2022 – 2026",
+  exp_job_1_location: "France",
+  exp_job_1_desc: "Cours particuliers en mathématiques, physique et chimie.",
+  exp_job_2_company: "Procter & Gamble",
+  exp_job_2_role: "Ingénieur Logiciel (Software Engineer)",
+  exp_job_2_period: "04/2025 – 10/2025",
+  exp_job_2_location: "Paris, France",
+  exp_job_2_desc: "Sécurisation de l'infrastructure en migrant des applications critiques vers une DMZ (réduction de 20% de la surface d'attaque). Développement full-stack complet d'une application d'usine en Python (Flask, restAPI, DevOps, Azure). Réduction par 2 du temps d'exécution des opérateurs et 50% d'économies liées aux pertes sur les lignes.",
+  exp_job_3_company: "Procter & Gamble",
+  exp_job_3_role: "Stage Digitalisation IT Usine",
+  exp_job_3_period: "06/2023 – 08/2023",
+  exp_job_3_location: "Amiens, France",
+  exp_job_3_desc: "Amélioration Continue : Refonte de l'application Power Platform Factory rendant le processus 3 fois plus rapide.",
   // Education
   edu_badge: "Académique",
   edu_title: "Formations",
@@ -227,25 +237,17 @@ const translationsFr = {
   description="Portfolio of Abd-Ennour OUAALI, Computer & Industrial Engineer specializing in Cybersecurity, Networks and Development. Available immediately."
 >
   <!-- ── Inject translation data into body for JS i18n engine ── -->
-  <body
+  <div id="i18n-data" class="hidden"
     data-translations-en={JSON.stringify(translationsEn)}
     data-translations-fr={JSON.stringify(translationsFr)}
-  >
+  ></div>
+
     <Header />
 
     <main>
       <Hero />
 
-      <!-- Separator -->
-      <div class="max-w-6xl mx-auto px-5 md:px-8">
-        <div class="h-px bg-gradient-to-r from-transparent via-sky-400/20 to-transparent"></div>
-      </div>
 
-      <Skills />
-
-      <div class="max-w-6xl mx-auto px-5 md:px-8">
-        <div class="h-px bg-gradient-to-r from-transparent via-sky-400/20 to-transparent"></div>
-      </div>
 
       <Experience />
 
@@ -265,9 +267,18 @@ const translationsFr = {
         <div class="h-px bg-gradient-to-r from-transparent via-sky-400/20 to-transparent"></div>
       </div>
 
+      <div class="max-w-6xl mx-auto px-5 md:px-8">
+        <div class="h-px bg-gradient-to-r from-transparent via-sky-400/20 to-transparent"></div>
+      </div>
+
+      <Skills />
+
+      <div class="max-w-6xl mx-auto px-5 md:px-8">
+        <div class="h-px bg-gradient-to-r from-transparent via-sky-400/20 to-transparent"></div>
+      </div>
+
       <ContactSection />
     </main>
 
     <Footer />
-  </body>
 </Layout>
