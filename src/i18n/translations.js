@@ -100,7 +100,7 @@ export const translations = {
           role: "Software Engineer",
           period: "04/2025 – 10/2025",
           location: "Paris, France",
-          description: "<ul class=\"list-disc list-outside pl-4 space-y-1\"><li>Secured infrastructure by migrating critical applications to DMZ, reducing attack surface by 20%.</li><li>Complete full stack development of a factory application in Python (Flask, restAPI, DevOps, Azure).</li><li>Reduction by 2 in operator execution time, 50% savings in costs related to losses on forward lines.</li></ul>",
+          description: "Secured infrastructure by migrating critical applications to DMZ, reducing attack surface by 20%. Complete full stack development of a factory application in Python (Flask, restAPI, DevOps, Azure). Reduction by 2 in operator execution time, 50% savings in costs related to losses on forward lines.",
           logo: "/images/logos/pg.png",
         },
         {
@@ -172,7 +172,7 @@ export const translations = {
           title: "ELF Infector",
           description: "Research project: development of an ELF binary infector to understand low-level malware propagation techniques on Linux.",
           tags: ["C", "Assembly", "Linux", "Malware Research"],
-          image: "/images/projects/elf.webp",
+          image: "/images/projects/elf.png",
         },
         {
           category: "Industrial",
@@ -353,7 +353,7 @@ export const translations = {
           logo: "/images/logos/cytech.png",
         },
         {
-          name: "Semestre d’échange universitaire Howest — Bruges, Belgique",
+          name: "Howest — Bruges, Belgique",
           degree: "Semestre d'échange universitaire",
           period: "01/2024 – 06/2024",
           detail: "Cybersécurité (pentest, cracking, sécurité mobile) et prototypage d'application.",
@@ -399,7 +399,7 @@ export const translations = {
           title: "Infecteur ELF",
           description: "Projet de recherche : développement d'un infecteur de binaires ELF pour comprendre les techniques de propagation de malwares bas-niveau sous Linux.",
           tags: ["C", "Assembly", "Linux", "Recherche Malware"],
-          image: "/images/projects/elf.webp",
+          image: "/images/projects/elf.png",
         },
         {
           category: "Industriel",
