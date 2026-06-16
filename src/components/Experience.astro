@@ -1,9 +1,11 @@
 ---
 // Experience.astro
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const jobs = [
   {
-    logo: "/images/logos/academie.png",
+    logo: "images/logos/academie.png",
     companyKey: "exp_job_0_company",
     companyDefault: "Académie d'Amiens",
     roleKey: "exp_job_0_role",
@@ -16,7 +18,7 @@ const jobs = [
     descDefault: "Contractual mathematics teacher",
   },
   {
-    logo: "/images/logos/acadomia.png",
+    logo: "images/logos/acadomia.png",
     companyKey: "exp_job_2_company",
     companyDefault: "Acadomia",
     roleKey: "exp_job_2_role",
@@ -29,7 +31,7 @@ const jobs = [
     descDefault: "Tutor in mathematics, physics, and chemistry",
   },
   {
-    logo: "/images/logos/completude.png",
+    logo: "images/logos/completude.png",
     companyKey: "exp_job_1_company",
     companyDefault: "Complétude",
     roleKey: "exp_job_1_role",
@@ -42,7 +44,7 @@ const jobs = [
     descDefault: "Tutor in mathematics, physics, and chemistry",
   },
   {
-    logo: "/images/logos/pg.png",
+    logo: "images/logos/pg.png",
     companyKey: "exp_job_3_company",
     companyDefault: "Procter & Gamble",
     roleKey: "exp_job_3_role",
@@ -55,7 +57,7 @@ const jobs = [
     descDefault: "<ul class=\"list-disc list-outside pl-4 space-y-1\"><li>Secured infrastructure by migrating critical applications to DMZ, reducing attack surface by 20%.</li><li>Complete full stack development of a factory application in Python (Flask, restAPI, DevOps, Azure).</li><li>Reduction by 2 in operator execution time, 50% savings in costs related to losses on forward lines.</li></ul>",
   },
   {
-    logo: "/images/logos/pg.png",
+    logo: "images/logos/pg.png",
     companyKey: "exp_job_4_company",
     companyDefault: "Procter & Gamble",
     roleKey: "exp_job_4_role",
@@ -106,7 +108,7 @@ const jobs = [
             <div class="flex-shrink-0 mt-1">
               <div class="logo-placeholder w-12 h-12 rounded-xl overflow-hidden">
                 <img
-                  src={job.logo}
+                  src={baseUrl + job.logo}
                   alt=""
                   class="w-full h-full object-contain"
                   onerror="this.style.display='none'; this.parentElement.classList.add('logo-missing')"

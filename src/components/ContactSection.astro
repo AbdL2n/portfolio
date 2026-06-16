@@ -1,5 +1,7 @@
 ---
 // ContactSection.astro
+
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <section id="contact" class="py-24 relative overflow-hidden">
@@ -31,7 +33,7 @@
 
     <!-- CTA Button -->
     <div class="flex justify-center mb-14 reveal reveal-delay-1">
-      <a href="/contact" class="btn-primary cta-btn" data-i18n="cta_btn">
+      <a href={baseUrl + "contact"} class="btn-primary cta-btn" data-i18n="cta_btn">
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
         </svg>
@@ -46,7 +48,7 @@
     <div class="flex items-center justify-center gap-5 reveal reveal-delay-3">
       <!-- GitHub -->
       <a
-        href="https://github.com/"
+        href="https://github.com/AbdL2n"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub"
@@ -62,7 +64,7 @@
 
       <!-- LinkedIn -->
       <a
-        href="https://linkedin.com/"
+        href="https://www.linkedin.com/in/abd-ennour-o-005740253/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn"
@@ -78,7 +80,7 @@
 
       <!-- Root-me -->
       <a
-        href="https://www.root-me.org/"
+        href="https://www.root-me.org/AbdL2n"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Root-me"

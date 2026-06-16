@@ -1,9 +1,11 @@
 ---
 // Education.astro
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const schools = [
   {
-    logo: "/images/logos/cytech.png",
+    logo: "images/logos/cytech.png",
     nameKey: "edu_school_0_name",
     nameDefault: "CY Tech — Cergy Paris Université",
     degreeKey: "edu_school_0_degree",
@@ -14,7 +16,7 @@ const schools = [
     detailDefault: "Specialization in IT/OT, cybersecurity and development",
   },
   {
-    logo: "/images/logos/howest.png",
+    logo: "images/logos/howest.png",
     nameKey: "edu_school_1_name",
     nameDefault: "Howest — Bruges, Belgium",
     degreeKey: "edu_school_1_degree",
@@ -25,7 +27,7 @@ const schools = [
     detailDefault: "Cybersecurity (pentest, cracking, mobile security) and app prototyping.",
   },
   {
-    logo: "/images/logos/cpge.png",
+    logo: "images/logos/cpge.png",
     nameKey: "edu_school_2_name",
     nameDefault: "CPGE — Lycée Louis Thuillier",
     degreeKey: "edu_school_2_degree",
@@ -36,7 +38,7 @@ const schools = [
     detailDefault: "Two years of Intensive training in maths, physics, engineering ( Bachelor degree).",
   },
   {
-    logo: "/images/logos/lycee.png",
+    logo: "images/logos/lycee.png",
     nameKey: "edu_school_3_name",
     nameDefault: "Lycée J-B Delambre",
     degreeKey: "edu_school_3_degree",
@@ -85,7 +87,7 @@ const schools = [
             <div class="flex-shrink-0 mt-1">
               <div class="logo-placeholder w-12 h-12 rounded-xl overflow-hidden">
                 <img
-                  src={school.logo}
+                  src={baseUrl + school.logo}
                   alt=""
                   class="w-full h-full object-contain mix-blend-multiply"
                   style={school.logo.includes('howest') ? 'transform: scale(1.4);' : ''}

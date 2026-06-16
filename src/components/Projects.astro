@@ -1,9 +1,11 @@
 ---
 // Projects.astro
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const projects = [
   {
-    image: "/images/projects/honeypot.png",
+    image: "images/projects/honeypot.png",
     imageSlug: "honeypot",
     categoryKey: "proj_item_0_category",
     categoryDefault: "Cybersecurity",
@@ -16,7 +18,7 @@ const projects = [
     accent: "sky",
   },
   {
-    image: "/images/projects/rootme.png",
+    image: "images/projects/rootme.png",
     imageSlug: "botnet",
     categoryKey: "proj_item_1_category",
     categoryDefault: "Cybersecurity",
@@ -29,7 +31,7 @@ const projects = [
     accent: "sky",
   },
   {
-    image: "/images/projects/elf.png",
+    image: "images/projects/elf.png",
     imageSlug: "elf",
     categoryKey: "proj_item_2_category",
     categoryDefault: "Cybersecurity",
@@ -41,7 +43,7 @@ const projects = [
     accent: "sky",
   },
   {
-    image: "/images/projects/embedded.png",
+    image: "images/projects/embedded.png",
     imageSlug: "scada",
     categoryKey: "proj_item_3_category",
     categoryDefault: "Industrial",
@@ -54,7 +56,7 @@ const projects = [
     accent: "indigo",
   },
   {
-    image: "/images/projects/tipe.png",
+    image: "images/projects/tipe.png",
     imageSlug: "portfolio",
     categoryKey: "proj_item_4_category",
     categoryDefault: "Web Development",
@@ -66,7 +68,7 @@ const projects = [
     accent: "indigo",
   },
   {
-    image: "/images/projects/corridor.png",
+    image: "images/projects/corridor.png",
     imageSlug: "corridor",
     categoryKey: "proj_item_5_category",
     categoryDefault: "Java",
@@ -109,7 +111,7 @@ const projects = [
           <!-- Image area -->
           <div class="project-image-wrapper">
             <img
-              src={project.image}
+              src={baseUrl + project.image}
               alt={project.titleDefault}
               class="project-img"
               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
@@ -120,7 +122,7 @@ const projects = [
               </svg>
               <p class="text-slate-600 text-xs text-center px-3">
                 Add project image to<br />
-                <code class="text-slate-500">public/images/projects/{project.imageSlug}.webp</code>
+                <code class="text-slate-500">publicimages/projects/{project.imageSlug}.webp</code>
               </p>
             </div>
             <!-- Category overlay -->

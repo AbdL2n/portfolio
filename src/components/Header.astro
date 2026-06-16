@@ -1,5 +1,7 @@
 ---
 // src/components/Header.astro
+
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <header
@@ -11,7 +13,7 @@
 
     <!-- ── Logo / Name ── -->
     <a
-      href="#home"
+      href={baseUrl}
       class="font-bold text-lg text-slate-100 hover:text-sky-400 transition-colors duration-200 tracking-tight"
     >
       Portfolio<span class="text-sky-400">.</span>
@@ -27,7 +29,7 @@
         { key: "skills",     href: "#skills"     },
       ].map(({ key, href }) => (
         <a
-          href={href}
+          href={baseUrl + href}
           data-i18n={`nav_${key}`}
           class="nav-link px-3 py-1.5 text-sm text-slate-400 hover:text-sky-400 hover:bg-sky-400/5 rounded-md transition-all duration-200 font-medium"
         >
@@ -66,7 +68,7 @@
 
       <!-- Contact link -->
       <a
-        href="/contact"
+        href={baseUrl + "contact"}
         data-i18n="nav_contact"
         class="px-3 py-1.5 text-sm text-slate-400 hover:text-sky-400 hover:bg-sky-400/5 rounded-md transition-all duration-200 font-medium"
       >
@@ -75,7 +77,7 @@
 
       <!-- Download CV -->
       <a
-        href="/cv/Resume_Abd-Ennour_OUAALI.pdf"
+        href={baseUrl + "cv/Resume_Abd-Ennour_OUAALI.pdf"}
         download
         data-i18n="nav_downloadCV"
         class="btn-primary text-sm py-2 px-4"
@@ -134,7 +136,7 @@
         { key: "projects",   label: "Projects",   href: "#projects"   },
       ].map(({ key, label, href }) => (
         <a
-          href={href}
+          href={baseUrl + href}
           data-i18n={`nav_${key}`}
           class="mobile-nav-link block px-3 py-2.5 text-sm text-slate-300 hover:text-sky-400 hover:bg-sky-400/5 rounded-md transition-all font-medium"
         >
@@ -143,14 +145,14 @@
       ))}
       <div class="mt-3 pt-3 border-t border-sky-400/10 flex flex-col gap-2">
         <a
-          href="/contact"
+          href={baseUrl + "contact"}
           data-i18n="nav_contact"
           class="block px-3 py-2.5 text-sm text-slate-300 hover:text-sky-400 hover:bg-sky-400/5 rounded-md transition-all font-medium"
         >
           Contact
         </a>
         <a
-          href="/cv/Resume_Abd-Ennour_OUAALI.pdf"
+          href={baseUrl + "cv/Resume_Abd-Ennour_OUAALI.pdf"}
           download
           class="btn-primary text-sm py-2.5 px-4 justify-center"
         >
